@@ -22,7 +22,7 @@ module Cinch::Plugins
     end
 
     def add_topic(m, topic)
-      return unless admin?(n.user, @admins.data)
+      return unless admin?(m.user, @admins.data)
       if bot_op?(m.channel)
         m.channel.topic = m.channel.topic + " | " + topic
       else
