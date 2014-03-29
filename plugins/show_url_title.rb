@@ -21,7 +21,6 @@ module Cinch::Plugins
 
     def listen(m)
       urls = URI.extract(m.message, /(https|http)/)
-      m.reply(urls)
       unless urls.empty?
         url_titles = urls.map {|url| show_url_title(url) }.compact
         urls.each_with_index do |url, index|
