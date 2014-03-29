@@ -20,7 +20,7 @@ module Cinch::Plugins
         @auto_op = true
         op_check(m.channel)
       else
-        m.reply("#{m.user.nick}: #{Format(:yellow, "Cannot comply, I am not an operator.")}", false)
+        m.reply("#{Format(:yellow, "#{m.user.nick}: Cannot comply, I am not an operator.")}", false)
       end
     end
 
