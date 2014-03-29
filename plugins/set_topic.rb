@@ -3,6 +3,7 @@ module Cinch::Plugins
     include Cinch::Plugin
 
     match /topic (.+)/, method: :set_topic
+    match /add topic (.+)/, method: :add_topic
 
     def initialize(*args)
       super
@@ -15,6 +16,15 @@ module Cinch::Plugins
       return unless admin?(m.user, @admins.data)
       if bot_op?(m.channel)
         m.channel.topic = topic
+      else
+        m.reply("#{Format(:yellow, "#{m.user.nick}: Cannot comply, I am not an operator.")}", false)
+      end
+    end
+
+    def add_topic(m, topic)
+      return unless admin?(n.user, @admins.data)
+      if bot_op?(m.channel)
+        m.channel.topic = m.channel.topic + " | " + topic
       else
         m.reply("#{Format(:yellow, "#{m.user.nick}: Cannot comply, I am not an operator.")}", false)
       end
