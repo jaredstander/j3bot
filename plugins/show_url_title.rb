@@ -24,7 +24,7 @@ module Cinch::Plugins
       unless urls.empty?
         url_titles = urls.map {|url| show_url_title(url) }.compact
         urls.each_with_index do |url, index|
-          if url.length > 30
+          if url.length > 130
             url_titles[index] += " (#{shorten(url)})"
           end
         end
