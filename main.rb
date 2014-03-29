@@ -4,6 +4,7 @@
 require "cinch"
 require "open-uri"
 require "nokogiri"
+require "openssl"
 require "securerandom"
 require_relative "helpers/check_user"
 require_relative "helpers/self"

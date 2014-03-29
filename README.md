@@ -10,7 +10,6 @@ To Do:
 
 * Update op system to op users without a verifiable user mask.
 
-* Add !define command to define words.
-
 * Improve / add cooldowns for things like join greetings.
 
+* Add !define command to define words.
