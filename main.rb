@@ -48,8 +48,3 @@ bot = Cinch::Bot.new do
 end
 
 bot.start
-
-# Things I want my IRC bot to do:
-# => Add weather plugin
-# => (Tabled) Flood warning / Kicking ===> Need to work out plugin config.
-# => Easter Eggs

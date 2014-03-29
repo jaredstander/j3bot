@@ -16,7 +16,7 @@ module Cinch::Plugins
       if bot_op?(m.channel)
         m.channel.topic = topic
       else
-        m.reply("#{Format(:yellow, "Cannot comply, I am not an operator.")}", true)
+        m.reply("#{Format(:yellow, "#{m.user.nick}: Cannot comply, I am not an operator.")}", false)
       end
     end
   end
