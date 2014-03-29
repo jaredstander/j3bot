@@ -4,7 +4,6 @@
 require "cinch"
 require "open-uri"
 require "nokogiri"
-require "openssl"
 require "securerandom"
 require_relative "helpers/check_user"
 require_relative "helpers/self"
@@ -25,8 +24,8 @@ bot = Cinch::Bot.new do
     c.verbose
     c.realname = "Metal Child"
     c.nick     = "j3bot"
-    c.server   = ""
-    c.channels = [""]
+    c.server   = "localhost"
+    c.channels = ["#testchannel"]
     c.plugins.plugins = [Cinch::Plugins::AdminToolbox,
                          Cinch::Plugins::AutoOP,
                          Cinch::Plugins::DiceRollCustom,
