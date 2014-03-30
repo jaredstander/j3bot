@@ -7,15 +7,15 @@ require "nokogiri"
 require "securerandom"
 require_relative "helpers/check_user"
 require_relative "helpers/self"
-require_relative "plugins/admin_toolbox"
-require_relative "plugins/auto_op"
+require_relative "plugins/admin_list_control"
 require_relative "plugins/dice_custom"
 require_relative "plugins/haiku_custom"
 require_relative "plugins/karma_custom"
+require_relative "plugins/on_join"
 require_relative "plugins/priv_toolbox"
+require_relative "plugins/recognize_self"
 require_relative "plugins/set_topic"
 require_relative "plugins/show_url_title"
-require_relative "plugins/spike"
 
 # Instantiate a new bot
 bot = Cinch::Bot.new do
@@ -26,24 +26,17 @@ bot = Cinch::Bot.new do
     c.nick     = "j3bot"
     c.server   = "localhost"
     c.channels = ["#testchannel"]
-    c.plugins.plugins = [Cinch::Plugins::AdminToolbox,
-                         Cinch::Plugins::AutoOP,
+    c.plugins.plugins = [Cinch::Plugins::AdminListControl,
                          Cinch::Plugins::DiceRollCustom,
                          Cinch::Plugins::HaikuCustom,
                          Cinch::Plugins::KarmaCustom,
+                         Cinch::Plugins::OnJoin,
                          Cinch::Plugins::PrivToolbox,
+                         Cinch::Plugins::RecognizeSelf,
                          Cinch::Plugins::SetTopic,
-                         Cinch::Plugins::ShowURLTitle,
-                         Cinch::Plugins::Spike]
+                         Cinch::Plugins::ShowURLTitle]
     c.plugins.options[Cinch::Plugins::HaikuCustom] = {:delay => 1}
-    c.shared[:cooldown] = { :config => { '#totaltest' => { :global => 1, :user => 20 } } }
-  end
-
-  # Welcome new users when they join a channel with a sample of welcome messages.
-  on :join do |m|
-    unless m.user.nick == bot.nick
-      m.reply("#{m.user.nick}: #{Format(:yellow, ["Willkommen!", "Halo!", "Halo Reach!", "We are well met."].sample)}", false)
-    end
+    c.shared[:cooldown] = { :config => { '#testchannel' => { :global => 1, :user => 20 } } }
   end
 end
 
