@@ -21,7 +21,9 @@ module Cinch::Plugins
         @admins.data << User(user_to_add).mask.to_s.slice!((User(user_to_add).nick.length + 1), User(user_to_add).mask.to_s.length)
         @admins.synced_save(@bot)
         m.reply("#{Format(:yellow, "#{User(user_to_add).nick} is now an op.")}")
-        m.channel.op(m.user)
+        unless admin?(user_to_add, @admins.data)
+          m.channel.op(user_to_add)
+        end
       end
     end
 
@@ -33,7 +35,9 @@ module Cinch::Plugins
         @admins.data.delete(User(user_to_remove).mask.to_s.slice!((User(user_to_remove).nick.length + 1), User(user_to_remove).mask.to_s.length))
         @admins.synced_save(@bot)
         m.reply("#{Format(:yellow, "#{User(user_to_remove).nick} has been removed from ops.")}")
-        m.channel.deop(user_to_remove)
+        unless !admin?(user_to_add, @admins.data)
+          m.channel.deop(user_to_remove)
+        end
       else
         m.reply("#{Format(:yellow, "#{User(user_to_remove).nick} is not a listed op.")}")
       end
