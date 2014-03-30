@@ -16,4 +16,4 @@ DONE * Update the topic command with an additive method that appends text to an 
 
 * Add !define command to define words.
 
-* Add weather plugin
+* Add weather plugin.
