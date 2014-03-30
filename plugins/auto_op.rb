@@ -41,7 +41,7 @@ module Cinch::Plugins
           end
         end
 
-        sleep 300
+        sleep 60
       end
     end
 
