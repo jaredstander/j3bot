@@ -31,9 +31,9 @@ module Cinch::Plugins
       if admin?(m.user, @admins.data)
         @admins.data.delete(User(user_to_add).mask.to_s.slice!((User(user_to_add).nick.length + 1), User(user_to_add).mask.to_s.length))
         @admins.synced_save(@bot)
-        m.reply("#{User(user_to_add).nick} has been removed from ops.")
+        m.reply("#{Format(:yellow, "#{User(user_to_add).nick} has been removed from ops.")}")
       else
-        m.reply("User is not a listed op.")
+        m.reply("#{Format(:yellow, "#{User(user_to_add).nick} is not a listed op.")}")
       end
     end
 
