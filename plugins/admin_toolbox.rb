@@ -26,7 +26,7 @@ module Cinch::Plugins
     end
 
     def rm_op(m)
-      return unless admin?(m.user, @admin.data)
+      return unless admin?(m.user, @admins.data)
       user_to_add = m.params[1].slice(7, m.params[1].length)
       if admin?(m.user, @admin.data)
         @admins.data.delete(User(user_to_add).mask.to_s.slice!((User(user_to_add).nick.length + 1), User(user_to_add).mask.to_s.length))
