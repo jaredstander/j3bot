@@ -21,8 +21,10 @@ module Cinch::Plugins
         @admins.data << User(user_to_add).mask.to_s.slice!((User(user_to_add).nick.length + 1), User(user_to_add).mask.to_s.length)
         @admins.synced_save(@bot)
         m.reply("#{Format(:yellow, "#{User(user_to_add).nick} is now an op.")}")
-        m.channel.op(User(user_to_add)) unless !admin?(User(user_to_add), @admins.data)
-        m.reply("#{Format(:yellow, "Warning: Automatic op failed, I am not a channel operator.")}") unless bot_op?(m.channel)
+        m.channel.op(User(user_to_add)) unless m.channel.opped?(User(user_to_add))
+        if !bot_op?(m.channel) && !m.channel.opped?(User(user_to_add))
+          m.reply("#{Format(:yellow, "Warning: Automatic op of #{user_to_add} failed, I am not a channel operator.")}")
+        end
       end
     end
 
@@ -34,8 +36,10 @@ module Cinch::Plugins
         @admins.data.delete(User(user_to_remove).mask.to_s.slice!((User(user_to_remove).nick.length + 1), User(user_to_remove).mask.to_s.length))
         @admins.synced_save(@bot)
         m.reply("#{Format(:yellow, "#{User(user_to_remove).nick} has been removed from ops.")}")
-        m.channel.deop(User(user_to_remove)) unless admin?(User(user_to_remove), @admins.data)
-        m.reply("#{Format(:yellow, "Warning: Automatic deop failed, I am not a channel operator.")}") unless bot_op?(m.channel)
+        m.channel.deop(User(user_to_remove)) unless !m.channel.opped?(User(user_to_add))
+        if !bot_op?(m.channel) && m.channel.opped?(User(user_to_add))
+          m.reply("#{Format(:yellow, "Warning: Automatic op of #{user_to_remove} failed, I am not a channel operator.")}")
+        end
       else
         m.reply("#{Format(:yellow, "#{User(user_to_remove).nick} is not a listed op.")}")
       end
