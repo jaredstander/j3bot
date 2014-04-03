@@ -10,6 +10,7 @@ require_relative "helpers/self"
 require_relative "plugins/admin_list_control"
 require_relative "plugins/dice_custom"
 require_relative "plugins/haiku_custom"
+require_relative "plugins/help"
 require_relative "plugins/karma_custom"
 require_relative "plugins/on_join"
 require_relative "plugins/priv_toolbox"
@@ -29,6 +30,7 @@ bot = Cinch::Bot.new do
     c.plugins.plugins = [Cinch::Plugins::AdminListControl,
                          Cinch::Plugins::DiceRollCustom,
                          Cinch::Plugins::HaikuCustom,
+                         Cinch::Plugins::Help,
                          Cinch::Plugins::KarmaCustom,
                          Cinch::Plugins::OnJoin,
                          Cinch::Plugins::PrivToolbox,

@@ -6,11 +6,8 @@ Replacement for depreciated ircbot repo.
 To Do:
 ======
 
-DONE * Fix http matcher for nokogiri to also scrape titles off of https URLs.
-
-DONE * Update the topic command with an additive method that appends text to an existing topic.
-
-* Add a help plugin to list features and uses.
+DONE * Add a help plugin to list features and uses.
+  --> Stop help matching from both answering specific queries.
 
 * Improve / add cooldowns for things like join greetings.
 

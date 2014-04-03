@@ -22,7 +22,7 @@ module Cinch::Plugins
             m.reply("#{Format(:yellow, "May the flames guide thee, #{m.user.nick}. Unfortunately, I am not an operator, and cannot authorize on join at this time.")}")
           end
         else
-          m.reply("#{m.user.nick}: #{Format(:yellow, ["Willkommen!", "Halo!", "Halo Reach!", "We are well met.", "Hello.", "Welcome back maybe!", "Hey dood.", "Sup."].sample)}", false)
+          m.reply("#{Format(:yellow, "#{m.user.nick}: " + ["Willkommen!", "Halo!", "Halo Reach!", "We are well met.", "Hello.", "Welcome back maybe!", "Hey dood.", "Sup."].sample)}", false)
         end
       end
     end
