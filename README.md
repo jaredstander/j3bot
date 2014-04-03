@@ -7,7 +7,7 @@ To Do:
 ======
 
 DONE * Add a help plugin to list features and uses.
-  --> Stop help matching from both answering specific queries.
+  DONE --> Stop help matching from both answering specific queries.
 
 * Improve / add cooldowns for things like join greetings.
 
