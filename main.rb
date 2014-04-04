@@ -1,13 +1,17 @@
 # Main file for the IRC bot.
 
 # Require cinch to use the cinch IRC bot framework
+require 'active_support/core_ext/hash/indifferent_access'
 require "cinch"
 require "open-uri"
 require "nokogiri"
 require "securerandom"
+require "wordnik"
+require "yaml"
 require_relative "helpers/check_user"
 require_relative "helpers/self"
 require_relative "plugins/admin_list_control"
+require_relative "plugins/define"
 require_relative "plugins/dice_custom"
 require_relative "plugins/haiku_custom"
 require_relative "plugins/help"
@@ -28,6 +32,7 @@ bot = Cinch::Bot.new do
     c.server   = "localhost"
     c.channels = ["#testchannel"]
     c.plugins.plugins = [Cinch::Plugins::AdminListControl,
+                         Cinch::Plugins::Define,
                          Cinch::Plugins::DiceRollCustom,
                          Cinch::Plugins::HaikuCustom,
                          Cinch::Plugins::Help,
@@ -38,7 +43,14 @@ bot = Cinch::Bot.new do
                          Cinch::Plugins::SetTopic,
                          Cinch::Plugins::ShowURLTitle]
     c.plugins.options[Cinch::Plugins::HaikuCustom] = {:delay => 1}
-    c.shared[:cooldown] = { :config => { '#testchannel' => { :global => 1, :user => 20 } } }
+    c.shared[:cooldown] = { :config => { '#testchannel' => { :global => 1, :user => 60 } } }
+  end
+
+  on :leaving do |m|
+    chance = (rand(1000) + 1)
+    if chance == 1000
+      m.reply("#{Format(:yellow, "Srsly though, #{m.user.nick} is such a fuck.")}", false)
+    end
   end
 end
 
