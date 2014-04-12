@@ -2,7 +2,6 @@
 
 # Require cinch to use the cinch IRC bot framework
 require "cinch"
-require "cinch/storage"
 require_relative "helpers/check_user"
 require_relative "helpers/self"
 require_relative "plugins/admin_list_control"

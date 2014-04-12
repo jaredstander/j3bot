@@ -1,3 +1,5 @@
+require "cinch-storage"
+
 module Cinch::Plugins
   class AdminListControl
     include Cinch::Plugin

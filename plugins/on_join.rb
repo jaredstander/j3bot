@@ -17,6 +17,7 @@ module Cinch::Plugins
           Channel(m.channel).action("bows")
           if bot_op?(m.channel)
             m.reply("#{Format(:yellow, "May the flames guide thee, #{m.user.nick}.")}", false)
+            sleep 2
             m.channel.op(m.user)
           else
             m.reply("#{Format(:yellow, "May the flames guide thee, #{m.user.nick}. Unfortunately, I am not an operator, and cannot authorize on join at this time.")}")
