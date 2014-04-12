@@ -1,3 +1,7 @@
+require "active_support/core_ext/hash/indifferent_access"
+require "wordnik"
+require "yaml"
+
 module Cinch::Plugins
   class Define
     include Cinch::Plugin

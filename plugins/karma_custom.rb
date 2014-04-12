@@ -1,8 +1,6 @@
 # Built using https://rubygems.org/gems/cinch-karma
 # Please give credit where credit it due!
 
-require 'cinch-storage'
-
 module Cinch::Plugins
   class KarmaCustom
     include Cinch::Plugin

@@ -1,3 +1,5 @@
+require "securerandom"
+
 module Cinch::Plugins
   class RecognizeSelf
     extend Cinch::Self

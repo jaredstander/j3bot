@@ -1,3 +1,6 @@
+require "open-uri"
+require "nokogiri"
+
 module Cinch::Plugins
   class ShowURLTitle
     include Cinch::Plugin

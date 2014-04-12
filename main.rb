@@ -1,13 +1,8 @@
 # Main file for the IRC bot.
 
 # Require cinch to use the cinch IRC bot framework
-require 'active_support/core_ext/hash/indifferent_access'
 require "cinch"
-require "open-uri"
-require "nokogiri"
-require "securerandom"
-require "wordnik"
-require "yaml"
+require "cinch/storage"
 require_relative "helpers/check_user"
 require_relative "helpers/self"
 require_relative "plugins/admin_list_control"
