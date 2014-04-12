@@ -2,8 +2,8 @@ module Cinch::Plugins
   class AdminListControl
     include Cinch::Plugin
 
-    match(/add op (\w+$)/, method: :add_op)
-    match(/rm op (\w+$)/, method: :rm_op)
+    match /add op (\w+$)/, method: :add_op
+    match /rm op (\w+$)/, method: :rm_op
 
     def initialize(*args)
       super

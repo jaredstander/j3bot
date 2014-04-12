@@ -7,8 +7,8 @@ module Cinch::Plugins
   class HaikuCustom
     include Cinch::Plugin
 
-    match "haiku"
-    def execute(m)
+    match "haiku", method: :print_haiku
+    def print_haiku(m)
       html = Nokogiri::HTML(open("http://www.dailyhaiku.org/haiku/?pg=#{rand(220) + 1}"))
       haikus = html.search('p.haiku').to_a
       haiku_lines = haikus.sample.text.split(/[\r\n]+/)

@@ -3,9 +3,9 @@ module Cinch::Plugins
     extend Cinch::Self
     include Cinch::Plugin
 
-    recognize /: (.+)/
+    recognize /: (.+)/, method: :recognize_self
 
-    def execute(m, message)
+    def recognize_self(m, message)
       m.reply(Format(:yellow, "#{m.user.nick}: #{SecureRandom.hex(message.length)}"), false)
     end
   end

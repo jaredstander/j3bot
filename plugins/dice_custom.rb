@@ -6,8 +6,8 @@ module Cinch::Plugins
     help: "Default dice rolling plugin from the Cinch example files with modifications for text output formatting."
 
     # [[<repeats>#]<rolls>]d<sides>[<+/-><offset>]
-    match(/roll (?:(?:(\d+)#)?(\d+))?d(\d+)(?:([+-])(\d+))?/)
-    def execute(m, repeats, rolls, sides, offset_op, offset)
+    match /roll (?:(?:(\d+)#)?(\d+))?d(\d+)(?:([+-])(\d+))?/, method: :roll_dice
+    def roll_dice(m, repeats, rolls, sides, offset_op, offset)
       repeats = repeats.to_i
       repeats = 1 if repeats < 1
       rolls   = rolls.to_i

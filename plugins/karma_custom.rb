@@ -11,8 +11,8 @@ module Cinch::Plugins
 
     listen_to :channel
 
-    match /karma (.+)/
-    match /k (.+)/
+    match /karma (.+)/, method: :check_karma
+    match /k (.+)/, method: :check_karma
 
     def initialize(*args)
       super
@@ -32,7 +32,7 @@ module Cinch::Plugins
       end
     end
 
-    def execute(m, item)
+    def check_karma(m, item)
       return if sent_via_pm?(m)
 
       channel = m.channel.name

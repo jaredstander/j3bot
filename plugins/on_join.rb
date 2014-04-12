@@ -2,7 +2,7 @@ module Cinch::Plugins
   class OnJoin
     include Cinch::Plugin
 
-    listen_to :join, :method => :on_join
+    listen_to :join, method: :on_join
 
     def initialize(*args)
       super
