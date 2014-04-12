@@ -43,7 +43,6 @@ bot = Cinch::Bot.new do
                          Cinch::Plugins::SetTopic,
                          Cinch::Plugins::ShowURLTitle]
     c.plugins.options[Cinch::Plugins::HaikuCustom] = {:delay => 1}
-    c.shared[:cooldown] = { :config => { '#testchannel' => { :global => 1, :user => 60 } } }
   end
 
   on :leaving do |m|

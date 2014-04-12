@@ -1,14 +1,11 @@
 # Built using https://rubygems.org/gems/cinch-karma
 # Please give credit where credit it due!
 
-require 'cinch/cooldown'
 require 'cinch-storage'
 
 module Cinch::Plugins
   class KarmaCustom
     include Cinch::Plugin
-
-    enforce_cooldown
 
     self.help = 'Use .karma <item> to see it\'s karma level. You can use <item>++ or <item>-- [or (something with spaces)++] to alter karma for an item'
 
