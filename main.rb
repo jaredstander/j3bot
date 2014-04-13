@@ -23,8 +23,8 @@ bot = Cinch::Bot.new do
     c.verbose
     c.realname = "Metal Child"
     c.nick     = "j3bot"
-    c.server   = "irc.wherestheparty.at"
-    c.channels = ["#poopsock"]
+    c.server   = "localhost"
+    c.channels = ["#testchannel"]
     c.plugins.plugins = [Cinch::Plugins::AdminListControl,
                          Cinch::Plugins::Define,
                          Cinch::Plugins::DiceRollCustom,
