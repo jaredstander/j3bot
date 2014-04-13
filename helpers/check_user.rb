@@ -2,14 +2,6 @@ module Cinch
   module Helpers
 
     def admin?(user, admin_list)
-      puts " "
-      puts " "
-      puts admin_list
-      puts user.mask
-      puts user.nick
-      puts user.mask.to_s.slice!((user.nick.length + 1), user.mask.to_s.length)
-      puts " "
-      puts " "
       admin_list.include?(user.mask.to_s.slice!((user.nick.length + 1), user.mask.to_s.length))
     end
 
