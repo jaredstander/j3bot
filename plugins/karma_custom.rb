@@ -20,17 +20,17 @@ module Cinch::Plugins
     end
 
     def listen(m)
-      if m.message.match(/!\S+[\+\-]{2}/)
+      if m.message.match(/\S+[\+\-]{2}/)
         channel = m.channel.name
 
         # Scan messages for multiple karma items
-        m.message.scan(/(\s|\A)!(\w+|\(.+?\))(\+\+|--)(\s|\z)/).each do |karma|
+        m.message.scan(/(\w+|\(.+?\))(\+\+|--)/).each do |karma|
           puts " "
-          puts m.message.scan(/(\s|\A)!(\w+|\(.+?\))(\+\+|--)(\s|\z)/)
-          puts karma[1].downcase
-          puts karma[2]
+          puts "SCANNED: #{m.message.scan(/(\w+|\(.+?\))(\+\+|--)/)}"
+          puts "K0: #{karma[0].downcase}"
+          puts "K1: #{karma[1]}"
           puts " "
-          process_karma(channel, karma[1].gsub(/\(|\)/, '').downcase, karma[2])
+          process_karma(channel, karma[0].gsub(/\(|\)/, '').downcase, karma[1])
         end
 
         @storage.synced_save(@bot)
@@ -50,6 +50,7 @@ module Cinch::Plugins
     private
 
     def process_karma(channel, item, operation)
+      puts "PROCESS KARMA #{item} #{operation}"
       # Ensure the item's Karma has been init
       init_karma(channel, item)
 
