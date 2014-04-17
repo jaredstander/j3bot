@@ -25,11 +25,6 @@ module Cinch::Plugins
 
         # Scan messages for multiple karma items
         m.message.scan(/(\w+|\(.+?\))(\+\+|--)/).each do |karma|
-          puts " "
-          puts "SCANNED: #{m.message.scan(/(\w+|\(.+?\))(\+\+|--)/)}"
-          puts "K0: #{karma[0].downcase}"
-          puts "K1: #{karma[1]}"
-          puts " "
           process_karma(channel, karma[0].gsub(/\(|\)/, '').downcase, karma[1])
         end
 
@@ -50,7 +45,6 @@ module Cinch::Plugins
     private
 
     def process_karma(channel, item, operation)
-      puts "PROCESS KARMA #{item} #{operation}"
       # Ensure the item's Karma has been init
       init_karma(channel, item)
 
