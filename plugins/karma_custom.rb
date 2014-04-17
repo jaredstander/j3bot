@@ -20,11 +20,16 @@ module Cinch::Plugins
     end
 
     def listen(m)
-      if m.message.match(/\S+[\+\-]{2}/)
+      if m.message.match(/!\S+[\+\-]{2}/)
         channel = m.channel.name
 
         # Scan messages for multiple karma items
-        m.message.scan(/(\s|\A)(\w+|\(.+?\))(\+\+|--)(\s|\z)/).each do |karma|
+        m.message.scan(/(\s|\A)!(\w+|\(.+?\))(\+\+|--)(\s|\z)/).each do |karma|
+          puts " "
+          puts m.message.scan(/(\s|\A)!(\w+|\(.+?\))(\+\+|--)(\s|\z)/)
+          puts karma[1].downcase
+          puts karma[2]
+          puts " "
           process_karma(channel, karma[1].gsub(/\(|\)/, '').downcase, karma[2])
         end
 
