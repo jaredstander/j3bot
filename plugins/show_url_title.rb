@@ -13,6 +13,7 @@ module Cinch::Plugins
     def show_url_title(url)
       doc = Nokogiri::HTML(open(url))
       doc.title == nil ? "No title" : doc.title
+      doc.title.strip == nil ? doc.title : doc.title.strip
     end
 
     def shorten(url)

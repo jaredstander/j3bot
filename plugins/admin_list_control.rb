@@ -40,7 +40,7 @@ module Cinch::Plugins
         m.reply("#{Format(:yellow, "#{User(user_to_remove).nick} has been removed from ops.")}")
         m.channel.deop(User(user_to_remove)) unless !m.channel.opped?(User(user_to_remove))
         if !bot_op?(m.channel) && m.channel.opped?(User(user_to_remove))
-          m.reply("#{Format(:yellow, "Warning: Automatic op of #{user_to_remove} failed, I am not a channel operator.")}")
+          m.reply("#{Format(:yellow, "Warning: Automatic deop of #{user_to_remove} failed, I am not a channel operator.")}")
         end
       else
         m.reply("#{Format(:yellow, "#{User(user_to_remove).nick} is not a listed op.")}")
