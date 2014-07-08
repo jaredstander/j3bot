@@ -7,13 +7,11 @@ module Cinch::Plugins
 
     def initialize(*args)
       super
-      @auto_op = false
       @admins = CinchStorage.new(config[:filename] || 'yaml/admins.yml')
       @admins.data ||= Array.new
     end
 
     def set_topic(m, topic)
-      return unless admin?(m.user, @admins.data)
       if bot_op?(m.channel)
         m.channel.topic = topic
       else
@@ -22,7 +20,6 @@ module Cinch::Plugins
     end
 
     def add_topic(m, topic)
-      return unless admin?(m.user, @admins.data)
       if bot_op?(m.channel)
         m.channel.topic = m.channel.topic + " | " + topic
       else

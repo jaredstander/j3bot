@@ -40,8 +40,7 @@ bot = Cinch::Bot.new do
   end
 
   on :leaving do |m|
-    chance = (rand(1000) + 1)
-    if chance == 1000
+    if (rand(1000) + 1) == 1000
       m.reply("#{Format(:yellow, "Srsly though, #{m.user.nick} is such a jerk.")}", false)
     end
   end
