@@ -16,7 +16,11 @@ module Cinch::Plugins
 
     def define_word(m, word)
       word_def = Wordnik.word.get_definitions(word)
-      m.reply("#{Format(:yellow, "#{word.capitalize} - #{word_def[0]["partOfSpeech"].capitalize}: \"#{word_def[0]["text"]}\"")}", false)
+      if word_def[0] == nil
+        m.reply("#{Format(:yellow, "Cannot define, #{word} not found.")}", false)
+      else
+        m.reply("#{Format(:yellow, "#{word.capitalize} - #{word_def[0]["partOfSpeech"].capitalize}: \"#{word_def[0]["text"].strip == nil ? word_def[0]["text"].gsub(/\s{2,}/, " ") : word_def[0]["text"].gsub(/\s{2,}/, " ").strip}\"")}", false)
+      end
     end
 
   end
